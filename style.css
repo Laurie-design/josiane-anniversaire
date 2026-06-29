@@ -1,0 +1,208 @@
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-snap-type:y proximity; }
+body {
+  font-family:'Nunito', sans-serif;
+  background:linear-gradient(170deg, #fef0f5 0%, #fce4ec 30%, #f3e5f5 60%, #fff5f5 100%);
+  color:#4a3040;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ========== PROGRESS BAR ========== */
+.progress-bar {
+  position:fixed; top:0; left:0; height:3px; width:100%;
+  background:rgba(233,30,99,0.1); z-index:100;
+}
+.progress-fill {
+  height:100%; width:0%;
+  background:linear-gradient(90deg, #ec407a, #e91e63, #c2185b);
+  transition:width 0.1s linear;
+}
+
+/* ========== PAGES ========== */
+.page {
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  position:relative; z-index:1; padding:1.2rem;
+  scroll-snap-align:start;
+}
+
+.page-inner {
+  width:100%; max-width:500px; position:relative;
+}
+
+.page-inner.full {
+  max-width:600px;
+}
+
+/* ========== IMAGES ========== */
+.img-full {
+  width:100%; max-height:55vh; object-fit:cover; border-radius:20px;
+  box-shadow:0 8px 32px rgba(136,14,79,0.15);
+  display:block; margin:0 auto;
+}
+
+/* ========== TEXT OVERLAY ========== */
+.text-overlay {
+  text-align:center; padding:1.5rem 0.5rem 0;
+}
+.text-overlay.bottom { }
+
+.big-title {
+  font-family:'Dancing Script', cursive;
+  font-size:clamp(2rem, 7vw, 3.5rem); color:#c2185b;
+  line-height:1.2;
+}
+.script-name {
+  font-family:'Dancing Script', cursive;
+  font-size:clamp(2.5rem, 9vw, 4.5rem); color:#ad1457;
+  font-weight:700; margin:0.2em 0;
+}
+.soft-text {
+  font-size:1.05rem; color:#7b4a5e; font-weight:400;
+  line-height:1.6; margin-top:0.3em;
+}
+.soft-text.small { font-size:0.9rem; color:#9e7b8a; }
+.heart-big { font-size:3rem; margin:0.4em 0; animation:pulse 1.5s ease-in-out infinite; }
+@keyframes pulse {
+  0%,100% { transform:scale(1); }
+  50%     { transform:scale(1.2); }
+}
+
+/* ========== TEXT BLOCKS ========== */
+.text-block {
+  padding:1rem 0.3rem; line-height:1.8; font-size:1.05rem;
+  color:#5d3a4a; text-align:left; position:relative; z-index:2;
+}
+.text-block p { margin-bottom:0.7rem; }
+.text-block.centered { text-align:center; }
+
+.small-note { font-size:0.9rem; color:#9e7b8a; font-style:italic; }
+
+.funny-note {
+  display:inline-block; background:rgba(255,182,193,0.35);
+  padding:0.4rem 1rem; border-radius:20px; font-weight:600;
+  color:#c2185b; margin-top:0.5rem; font-size:0.95rem;
+}
+
+/* ========== SHOUT TEXT (MAMA) ========== */
+.shout-text {
+  font-family:'Nunito', sans-serif;
+  font-size:clamp(1.8rem, 7vw, 2.8rem); font-weight:800;
+  color:#c2185b; text-transform:uppercase;
+  letter-spacing:1px; margin:0.3em 0;
+}
+.emoji-row { font-size:3rem; }
+
+.script-big {
+  font-family:'Dancing Script', cursive;
+  font-size:clamp(1.8rem, 7vw, 2.8rem); color:#c2185b;
+  margin-bottom:1rem;
+}
+
+.big-emoji { font-size:4rem; margin-bottom:0.5rem; }
+
+.closing {
+  margin-top:1.2rem; padding-top:1rem;
+  border-top:1px solid rgba(233,30,99,0.2);
+}
+
+/* ========== VIDEOS ========== */
+.vid-main, .vid-sub {
+  width:100%; border-radius:16px; display:block;
+  box-shadow:0 6px 24px rgba(136,14,79,0.12);
+  cursor:pointer; background:#000;
+}
+
+.vid-main { max-height:50vh; object-fit:contain; }
+.vid-sub { width:100%; height:100%; object-fit:cover; }
+
+.play-btn {
+  position:absolute; top:40%; left:50%;
+  transform:translate(-50%,-50%);
+  font-size:2.5rem; color:#fff; z-index:3;
+  background:rgba(194,24,91,0.85); width:60px; height:60px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  cursor:pointer; pointer-events:none; transition:opacity 0.3s;
+  text-shadow:0 2px 4px rgba(0,0,0,0.3);
+  box-shadow:0 4px 18px rgba(194,24,91,0.5);
+}
+.play-btn.small { width:40px; height:40px; font-size:1.2rem; top:35%; }
+.play-btn.hidden { opacity:0; }
+
+/* ========== DUAL VIDEOS ========== */
+.dual-videos {
+  display:flex; gap:0.7rem; margin-bottom:0.5rem;
+}
+.dual-videos .vid-wrapper {
+  flex:1; position:relative; border-radius:16px; overflow:hidden;
+  aspect-ratio:9/16; max-height:45vh;
+  box-shadow:0 4px 18px rgba(136,14,79,0.1);
+}
+.dual-videos .vid-wrapper video {
+  width:100%; height:100%; object-fit:cover; border-radius:16px;
+}
+
+/* ========== VIDEO MOSAIC ========== */
+.video-mosaic {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0.5rem; margin-bottom:1.5rem;
+}
+.video-mosaic .mosaic-item {
+  position:relative; border-radius:12px; overflow:hidden;
+  aspect-ratio:1/1; background:#000;
+  box-shadow:0 3px 12px rgba(136,14,79,0.1);
+  cursor:pointer; transition:transform 0.2s;
+}
+.video-mosaic .mosaic-item:active { transform:scale(0.95); }
+.video-mosaic .mosaic-item video {
+  width:100%; height:100%; object-fit:cover;
+}
+.mosaic-play {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  font-size:1.4rem; color:#fff; z-index:2; pointer-events:none;
+  background:rgba(0,0,0,0.5); width:32px; height:32px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+}
+
+/* ========== TEXT-ONLY PAGE ========== */
+.text-only-page .page-inner {
+  background:rgba(255,255,255,0.5); backdrop-filter:blur(10px);
+  border-radius:20px; padding:2rem 1.5rem;
+  border:1px solid rgba(233,30,99,0.1);
+  box-shadow:0 8px 32px rgba(136,14,79,0.08);
+}
+
+/* ========== SCROLL HINT ========== */
+.scroll-hint {
+  position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%);
+  color:#c2185b; font-weight:600; font-size:0.9rem;
+  animation:bounceHint 2s ease-in-out infinite; z-index:2;
+  background:rgba(255,255,255,0.7); padding:0.4rem 1rem; border-radius:20px;
+}
+@keyframes bounceHint {
+  0%,100% { transform:translateX(-50%) translateY(0); }
+  50%     { transform:translateX(-50%) translateY(8px); }
+}
+
+/* ========== FOOTER (AUCUNE, LA DERNIÈRE PAGE SERT DE FIN) ========== */
+
+/* ========== RESPONSIVE ========== */
+@media (max-width:400px) {
+  .page { padding:0.8rem; }
+  .text-block { font-size:0.95rem; }
+  .video-mosaic { grid-template-columns:repeat(4,1fr); gap:0.3rem; }
+  .dual-videos { flex-direction:column; }
+}
+@media (min-width:768px) {
+  .page-inner { max-width:550px; }
+  .page-inner.full { max-width:700px; }
+  .vid-main { max-height:55vh; }
+  .video-mosaic { grid-template-columns:repeat(4,1fr); }
+}
+@media (min-width:1024px) {
+  body { font-size:1.1rem; }
+  .page-inner { max-width:600px; }
+  .page-inner.full { max-width:800px; }
+  .video-mosaic { grid-template-columns:repeat(4,1fr); }
+}
